@@ -7,6 +7,9 @@ from src.utils.config import config
 from src.services.vector_store import VectorStoreService
 from src.models.schemas import DifficultyLevel
 
+# Constants
+MAX_EXERCISE_EXAMPLES = 2  # Maximum number of exercise examples to retrieve
+
 class ExerciseService:
     """Service for generating exercises and checking solutions."""
     
@@ -40,8 +43,8 @@ class ExerciseService:
         theory_context = "\n\n".join([doc.page_content for doc in theory_docs])
         
         # Retrieve similar exercises for inspiration
-        exercise_docs = self.vector_store.search_exercises(topic, k=2)
-        exercise_examples = "\n\n".join([doc.page_content for doc in exercise_docs[:2]]) if exercise_docs else "Nessun esempio disponibile."
+        exercise_docs = self.vector_store.search_exercises(topic, k=MAX_EXERCISE_EXAMPLES)
+        exercise_examples = "\n\n".join([doc.page_content for doc in exercise_docs[:MAX_EXERCISE_EXAMPLES]]) if exercise_docs else "Nessun esempio disponibile."
         
         # Build prompt
         prompt = f"""Sei un professore esperto di ingegneria informatica. Devi creare un esercizio per studenti.
@@ -182,7 +185,7 @@ APPROCCIO CORRETTO:
             if "PUNTEGGIO:" in line:
                 try:
                     score = float(line.split("PUNTEGGIO:")[1].strip().split()[0])
-                except:
+                except (ValueError, IndexError):
                     score = 50.0 if is_correct else 30.0
                 break
         

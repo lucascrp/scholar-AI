@@ -32,6 +32,13 @@ class Config:
     CHUNK_SIZE = 1000
     CHUNK_OVERLAP = 200
     
+    # Topic extraction keywords (can be customized per subject)
+    TOPIC_KEYWORDS = [
+        "algoritmo", "struttura dati", "complessità", "grafo",
+        "albero", "lista", "ricerca", "ordinamento", "hash",
+        "pila", "coda", "ricorsione", "iterazione", "notazione"
+    ]
+    
     @classmethod
     def ensure_directories(cls):
         """Create necessary directories if they don't exist."""

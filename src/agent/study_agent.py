@@ -80,8 +80,7 @@ class StudyAgent:
         # This is a simplified implementation
         # Could be enhanced with NLP techniques
         topics = set()
-        keywords = ["algoritmo", "struttura dati", "complessità", "grafo", 
-                   "albero", "lista", "ricerca", "ordinamento", "hash"]
+        keywords = config.TOPIC_KEYWORDS
         
         for doc in documents[:3]:  # Check first 3 documents
             content = doc.page_content.lower()

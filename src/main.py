@@ -62,8 +62,13 @@ async def upload_theory_document(file: UploadFile = File(...)):
     Returns:
         UploadResponse with processing details
     """
+    # Validate file extension
     if not file.filename.endswith('.pdf'):
         raise HTTPException(status_code=400, detail="Only PDF files are allowed")
+    
+    # Validate content type
+    if file.content_type not in ['application/pdf']:
+        raise HTTPException(status_code=400, detail="Invalid file type. Expected PDF.")
     
     try:
         # Save uploaded file
@@ -93,8 +98,13 @@ async def upload_exercise_document(file: UploadFile = File(...)):
     Returns:
         UploadResponse with processing details
     """
+    # Validate file extension
     if not file.filename.endswith('.pdf'):
         raise HTTPException(status_code=400, detail="Only PDF files are allowed")
+    
+    # Validate content type
+    if file.content_type not in ['application/pdf']:
+        raise HTTPException(status_code=400, detail="Invalid file type. Expected PDF.")
     
     try:
         # Save uploaded file
