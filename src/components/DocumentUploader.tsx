@@ -112,7 +112,7 @@ const DocumentUploader: React.FC<DocumentUploaderProps> = ({
             const file = e.target.files?.[0];
             if (file) {
               // Import dinamico per evitare problemi con il bundler
-              const { extractTextFromPDF, fileToBase64 } = await import('../services/pdfService');
+              const { extractTextFromPDF } = await import('../services/pdfService');
               
               try {
                 const content = file.name.endsWith('.txt')

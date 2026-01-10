@@ -127,7 +127,7 @@ function convertToLaTeX(text: string): string {
 // ============== SISTEMA RAG SEMPLICE ==============
 
 // Divide il testo in chunks sovrapposti
-function chunkText(text: string, chunkSize: number = 500, overlap: number = 100): string[] {
+function chunkText(text: string, chunkSize: number = 500, _overlap: number = 100): string[] {
   const chunks: string[] = [];
   
   // Prima dividi per paragrafi/sezioni naturali

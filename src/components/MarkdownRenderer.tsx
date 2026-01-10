@@ -45,7 +45,6 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
     const elements: React.ReactNode[] = [];
     let inCodeBlock = false;
     let codeContent: string[] = [];
-    let codeLanguage = '';
     
     lines.forEach((line, idx) => {
       const trimmed = line.trim();
@@ -54,7 +53,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
       if (trimmed.startsWith('```')) {
         if (!inCodeBlock) {
           inCodeBlock = true;
-          codeLanguage = trimmed.slice(3);
+          // Language identifier after ``` is available but not currently used
           codeContent = [];
         } else {
           inCodeBlock = false;

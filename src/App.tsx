@@ -17,7 +17,6 @@ import {
   BookOpen,
   Brain,
   Search,
-  Clock,
   Trash2,
   RotateCcw,
   CheckCircle2,
@@ -195,12 +194,6 @@ const App: React.FC = () => {
     if (course.deletedAt) return;
     setSelectedCourseId(course.id);
     setCurrentView('course-detail');
-  }, []);
-
-  const handleDeleteCourse = useCallback((id: string) => {
-    setCourses(prev => prev.map(c => 
-      c.id === id ? { ...c, deletedAt: Date.now() } : c
-    ));
   }, []);
 
   const handleRestoreCourse = useCallback((id: string) => {

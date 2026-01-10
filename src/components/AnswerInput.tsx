@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { Upload, FileText, Image, Send, Loader2, X, Camera } from 'lucide-react';
-import { extractTextFromPDF, fileToBase64 } from '../services/pdfService';
+import { FileText, Image, Send, Loader2, X, Camera } from 'lucide-react';
+import { extractTextFromPDF } from '../services/pdfService';
 import { extractTextFromImage, isImageFile, isPDFFile } from '../services/ocrService';
 import type { AnswerType } from '../types';
 
