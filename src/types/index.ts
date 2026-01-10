@@ -69,6 +69,7 @@ export type ViewType =
 
 // Stato del modello LLM
 export type ModelStatus = 
+  | 'idle'
   | 'not-loaded' 
   | 'loading' 
   | 'ready' 

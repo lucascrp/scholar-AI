@@ -7,7 +7,7 @@ import AnswerInput from './components/AnswerInput';
 import MarkdownRenderer from './components/MarkdownRenderer';
 import ModelStatus from './components/ModelStatus';
 import { dbService, DEFAULT_SETTINGS } from './services/dbService';
-import { llmService, DEFAULT_MODEL_ID } from './services/llmService';
+import { llmService, DEFAULT_MODEL_ID, AVAILABLE_MODELS } from './services/llmService';
 import { generateId } from './services/pdfService';
 import {
   Plus,
@@ -368,6 +368,10 @@ const App: React.FC = () => {
     } catch (error) {
       console.error('Errore caricamento modello:', error);
     }
+  }, []);
+
+  const handleSelectModel = useCallback((modelId: string) => {
+    setSettings(prev => ({ ...prev, selectedModelId: modelId }));
   }, []);
 
   // Render views
